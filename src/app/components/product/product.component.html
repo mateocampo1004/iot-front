@@ -43,3 +43,10 @@
     </nz-form-control>
   </nz-form-item>
 </form>
+@if (selectedProduct) {
+  <app-update-product
+    [product]="selectedProduct"
+    (productUpdated)="onProductUpdate()"
+  ></app-update-product>
+  }
+  <app-product-list (productSelected)="editProduct($event)"></app-product-list>

@@ -20,6 +20,7 @@ import { IotShopService } from '../../services/iot-shop.service';
 @Component({
   selector: 'app-product',
   standalone: true,
+  
   imports: [
     NzFormControlComponent,
     NzFormDirective,
@@ -33,6 +34,7 @@ import { IotShopService } from '../../services/iot-shop.service';
     CommonModule,
     ProductListComponent,
     UpdateProductComponent,
+  
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
@@ -98,4 +100,5 @@ export class ProductComponent {
   editProduct(product: any): void {
     this.selectedProduct = product;
   }
+  
 }

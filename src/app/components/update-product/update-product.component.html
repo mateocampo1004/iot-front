@@ -1,1 +1,52 @@
-<p>update-product works!</p>
+<h1>Actualizar Producto</h1>
+
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitFormProductUpdate()">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>Nombre del Producto</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <input nz-input formControlName="name" placeholder="PS5" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>Descripción</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <input
+        nz-input
+        formControlName="description"
+        placeholder="The best console in the world"
+      />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>Stock</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-input-number
+        formControlName="stock"
+        nzPlaceHolder="0-10000"
+        [nzMin]="0"
+        [nzMax]="10000"
+        [nzStep]="1"
+      ></nz-input-number>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>Precio Unitario</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-input-number
+        formControlName="price"
+        nzPlaceHolder="0-5000"
+        [nzMin]="0"
+        [nzMax]="5000"
+        [nzStep]="1"
+      ></nz-input-number>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control
+      [nzXs]="{ span: 24, offset: 0 }"
+      [nzSm]="{ span: 16, offset: 8 }"
+    >
+      <button nz-button nzType="primary">Enviar</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

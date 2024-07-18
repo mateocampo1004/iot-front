@@ -7,12 +7,10 @@ import { ProductListComponent } from "../../components/product-list/product-list
   standalone: true,
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.css'],
-  imports: [ProductComponent, ProductListComponent]
+  imports: [ProductComponent, ProductListComponent],
 })
 export class WelcomeComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() { }
-
+  ngOnInit() {}
 }
