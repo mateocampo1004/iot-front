@@ -1,1 +1,34 @@
-<p>product-list works!</p>
+<h1>Lista de Productos</h1>
+
+<nz-table
+  #basicTable
+  [nzData]="product"
+  [nzBordered]="true"
+  [nzSize]="'middle'"
+>
+  <thead>
+    <tr>
+      <th nzWidth="20%">Product Name</th>
+      <th nzWidth="40%">Description</th>
+      <th nzWidth="20%">Quantity in Stock</th>
+      <th nzWidth="10%">Unit Price</th>
+      <th nzWidth="10%">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of product; track $index) {
+    <tr>
+      <td>{{ item.productName }}</td>
+      <td>{{ item.description }}</td>
+      <td>{{ item.quantityInStock }}</td>
+      <td>{{ item.unitPrice }}</td>
+      <td>
+        <button nz-button (click)="selectedProduct(item)">Editar</button>
+        <button nz-button nzDanger (click)="deleteProduct(item.id)">
+          Eliminar
+        </button>
+      </td>
+    </tr>
+    }
+  </tbody></nz-table
+>

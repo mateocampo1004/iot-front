@@ -17,11 +17,11 @@ export class IotShopService {
     return this.http.post<T>(`${this.url}/products`, product);
   }
 
-  deleteProduct(id: string): Observable<any> {
+  deleteProduct(id: number): Observable<any> {
     return this.http.delete<any>(`${this.url}/products/${id}`);
   }
 
-  updateProduct(id: string, product: any): Observable<any> {
+  updateProduct(id: number, product: any): Observable<any> {
     return this.http.patch<any>(`${this.url}/products/${id}`, product);
   }
 }

@@ -12,10 +12,10 @@ import { CommonModule } from '@angular/common';
 import { NgIf } from '@angular/common';
 import { FormGroup, FormControl, NonNullableFormBuilder } from '@angular/forms';
 import { Validators as MyValidators } from '@angular/forms';
-import { IotShopService } from '../../services/iot-shop.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { ProductListComponent } from '../product-list/product-list.component';
 import { UpdateProductComponent } from '../update-product/update-product.component';
+import { IotShopService } from '../../services/iot-shop.service';
 
 @Component({
   selector: 'app-product',
@@ -33,10 +33,9 @@ import { UpdateProductComponent } from '../update-product/update-product.compone
     CommonModule,
     ProductListComponent,
     UpdateProductComponent,
-    NgIf
   ],
   templateUrl: './product.component.html',
-  styleUrl: './product.component.css'
+  styleUrl: './product.component.css',
 })
 export class ProductComponent {
   constructor(
@@ -46,30 +45,35 @@ export class ProductComponent {
   ) {
     const { required } = MyValidators;
     this.validateForm = this.fb.group({
-      productName: ['', [required]],
+      name: ['', [required]],
       description: ['', [required]],
-      unitPrice: [0, [required]],
-      quantityInStock: [0, [required]],
-      
+      stock: [0, [required]],
+      price: [0, [required]],
     });
   }
 
   selectedProduct: any;
 
   validateForm: FormGroup<{
-    productName: FormControl<string>;
+    name: FormControl<string>;
     description: FormControl<string>;
-    unitPrice: FormControl<number>;
-    quantityInStock: FormControl<number>;
-    
+    stock: FormControl<number>;
+    price: FormControl<number>;
   }>;
 
   submitFormProduct(): void {
     if (this.validateForm.valid) {
-      this.service.createProduct(this.validateForm.value).subscribe(() => {
+      const productData = {
+        name: this.validateForm.value.name,
+        description: this.validateForm.value.description,
+        price: this.validateForm.value.price,
+        stock: this.validateForm.value.stock,
+      };
+
+      this.service.createProduct(productData).subscribe(() => {
         this.createNotification(
           'success',
-          `${this.validateForm.value.productName}${this.validateForm.value.description}`,
+          `${this.validateForm.value.name} ${this.validateForm.value.description}`,
           'The product was created successfully'
         );
       });
